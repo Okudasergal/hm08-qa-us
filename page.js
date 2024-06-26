@@ -4,8 +4,8 @@ module.exports = {
     toField: '#to',
     phoneNumberField: '#phone',
     codeField: '#code',
-    cardNumberField: '#number',
-    cardCodeField: '.card-second-row #code',
+    cardNumberField: '#number.card-input',
+    cvvCodeField: '.card-second-row #code',
     comment: '#comment',
     iceCreamCount: '.counter-value',
     // Buttons
@@ -15,15 +15,17 @@ module.exports = {
     confirmButton: 'button=Confirm',
     supportivePlanButton: 'div=Supportive',
     paymentMethodButton: '.pp-text',
-    addCardButton: 'div-Add card',
-    messageToDriver: 'label=Message to the driver...',
-    linkButton: 'button-link',
+    addCardButton: 'div=Add card',
+    messageToDriver: '#comment',
+    linkButton: 'button=Link',
     blanketAndHankerchiefButton: '.r-sw',
     blanketSwitch: '.switch-input',
-    addedCard: 'div=Card',
     plusIceCream: '.counter-plus',
+    orderButton: 'span.smart-button-main',
     // Modals
     phoneNumberModal: '.modal',
+    cardPaymentModal: '.payment-picker.open',
+    carSearchModal: '.order-body',
     // Functions
     fillAddresses: async function(from, to) {
         const fromField = await $(this.fromField);
