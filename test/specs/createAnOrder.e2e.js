@@ -5,10 +5,8 @@ describe('Create an order', () => {
     it('should set an address', async () => {
         await browser.url(`/`)
         await page.fillAddresses('East 2nd Street, 601', '1300 1st St');
-        const fromField = await $('#from');
-        await fromField.setValue('East 2nd Street, 601');
-        const toField = await $('#to');
-        await toField.setValue('1300 1st St');
+        const fromField = await $(page.fromField);
+        const toField = await $(page.toField);
         await expect(fromField).toHaveValue('East 2nd Street, 601');
         await expect(toField).toHaveValue('1300 1st St');
     })
@@ -57,15 +55,16 @@ describe('Create an order', () => {
         
         const cardNumberField = await $(page.cardNumberField);
         await cardNumberField.waitForDisplayed();
-        await cardNumberField.setValue('1450 0000 5412');
+        await cardNumberField.setValue('1234 0000 1420');
     
         const cvvCodeField = await $(page.cvvCodeField);
         await cvvCodeField.waitForDisplayed();
-        await cvvCodeField.setValue('93');
+        await cvvCodeField.setValue('12');
     
         const linkButton = await $(page.linkButton);
         await linkButton.waitForDisplayed();
         await linkButton.click();
+        await expect(paymentMethodButton).toBeExisting();
     });
 
     it('write a message to the driver', async () => {
@@ -75,6 +74,7 @@ describe('Create an order', () => {
         await messageToDriver.waitForDisplayed();
         await messageToDriver.scrollIntoView();
         await messageToDriver.setValue('i need help.');
+        await expect(messageToDriver).toBeExisting();
     })
 
     it('should order a Blanket and hankerchiefs', async () => {
